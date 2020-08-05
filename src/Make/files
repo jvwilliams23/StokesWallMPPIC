@@ -1,0 +1,5 @@
+patchInteractionDataListHW.C
+patchInteractionDataHW.C
+makeParcelPatchInteractionModelsHW.C
+
+LIB = $(FOAM_USER_LIBBIN)/libLocalInteractionModelHW
