@@ -1,0 +1,19 @@
+#!/bin/bash
+
+rm *.dat *.txt
+rm logRun
+
+python3 scripts/initStokes.py
+
+i=0
+cat viscosity_list.txt | while read line; do
+    echo "iteration ${i}"
+    sed "s/VISCOSITYORIG/${line}/g" constant/kinematicCloudPropertiesDef > constant/kinematicCloudProperties
+    bash scripts/run_sim.sh
+
+    ((i++))
+
+done
+
+paste stokes_numbers.txt coeffRest.dat > results.dat
+

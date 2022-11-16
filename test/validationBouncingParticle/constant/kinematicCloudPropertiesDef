@@ -1,0 +1,124 @@
+
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      particleProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solution
+{
+    active          true;
+    coupled         true;
+    transient       yes;
+    cellValueSourceCorrection off;
+
+    interpolationSchemes
+    {
+        rho        cell;
+        U          cell;
+        mu         cell;
+    }
+
+    averagingMethod basic;
+
+    integrationSchemes
+    {
+        U               Euler;
+    }
+
+    sourceTerms
+    {
+        schemes
+        {
+            U semiImplicit 1;
+        }
+    }
+}
+
+constantProperties
+{
+    rho0            1000;
+
+    alphaMax        0.9;
+}
+
+subModels
+{
+    particleForces
+    {
+    }
+
+    injectionModels
+    {
+
+        model1
+        {
+            type            manualInjection;
+            positionsFile   "injectionTable.dat";
+            parcelBasisType fixed;
+
+            U0              (1 0 0);
+            nParticle       1;
+            sizeDistribution
+            {
+                type        fixedValue;
+                fixedValueDistribution
+                {
+                    value   0.1;
+                }
+            }
+            flowRateProfile constant 1;
+            massTotal       0;
+            SOI 0;
+        }
+    }
+
+    dispersionModel none;
+
+    patchInteractionModel localInteractionHW;
+
+    localInteractionHWCoeffs
+    {
+        patches
+            (
+             "(outlet|inlet|walls)"
+             {
+             type rebound;
+             e    0.92;
+             mu   0.35;
+             rhoF	1000.;
+             muP    VISCOSITYORIG;
+             coeffStc 35.;
+             eCutoffLog 	-5.3;
+             }
+            );
+    }
+
+    heatTransferModel none;
+
+    surfaceFilmModel none;
+
+    packingModel none;
+
+    dampingModel none;
+
+    isotropyModel none;
+
+    stochasticCollisionModel none;
+
+    radiation off;
+}
+
+
+// ************************************************************************* //
