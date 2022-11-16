@@ -1,10 +1,6 @@
 {
     "description": "<p>First release</p>", 
-    "license": "other-open", 
-    "title": "jvwilliams23/StokesWallMPPIC: v0.1.0", 
-    "version": "v0.1.0", 
     "upload_type": "software", 
-    "publication_date": "2022-11-16", 
     "creators": [
         {
             "name": "Josh Williams"
@@ -14,19 +10,6 @@
         },
         {
             "name": "Ali Ozel"
-        }
-    ], 
-    "access_right": "open", 
-    "related_identifiers": [
-        {
-            "scheme": "url", 
-            "identifier": "https://github.com/jvwilliams23/StokesWallMPPIC/tree/v0.1.0", 
-            "relation": "isSupplementTo"
-        }, 
-        {
-            "scheme": "doi", 
-            "identifier": "10.5281/zenodo.7326657", 
-            "relation": "isVersionOf"
         }
     ]
 }
