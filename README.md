@@ -1,4 +1,8 @@
 # StokesWallMPPIC
+
+[![DOI](https://zenodo.org/badge/255365408.svg)](https://zenodo.org/badge/latestdoi/255365408)
+
+
 OpenFOAM-6 code to model particle-wall rebound damping due to lubrication forces. 
 
 The coefficient of restitution (velocity after collision/velocity before collision), varies with a sigmoid as the Stokes number increases, as given by Legendre et al. (2005).
