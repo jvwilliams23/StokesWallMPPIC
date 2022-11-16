@@ -16,4 +16,5 @@ cat viscosity_list.txt | while read line; do
 done
 
 paste stokes_numbers.txt coeffRest.dat > results.dat
+python3 scripts/calc_error.py
 
